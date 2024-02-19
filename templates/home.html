@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Font Awesome -->
+    <link
+        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        rel="stylesheet"
+        />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- Stackpath -->
+    <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>List of channels</title>
+</head>
+<body>
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script type="text/javascript"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    </script>
+    <div class="row d-flex justify-content-center mt-100 mb-100">                              
+        <div class="col-lg-6">       
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="card-title m-b-0">List of message channels</h4>
+                </div>
+                <ul class="list-style-none">
+                    {% for channel in channels %}
+                    <li class="d-flex no-block card-body border-bottom">
+                        <i class="fa fa-check-circle w-30px m-t-5"></i>
+                        <div>
+                            <a href="/show?channel={{ channel.endpoint | urlencode }}" class="m-b-0 font-medium p-0" data-abc="true">{{ channel.name }}</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
